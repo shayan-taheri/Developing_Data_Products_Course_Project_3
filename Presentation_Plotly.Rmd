@@ -1,0 +1,36 @@
+---
+title: "Developing Data Products Course Project: Shiny Application and Reproducible Pitch Presentation"
+author: "Shayan (Sean) Taheri"
+date: "June 10th, 2019"
+output: 
+  ioslides_presentation: 
+    smaller: yes
+runtime: shiny
+---
+
+## Overview
+In this project, the plan is developing an application for "Developing Data Products". The Motor Trend U.S. Magazine collected data from eleven variables on 32 automobiles at the year of 1974. The data for prediction was extracted from "mtcars" dataset. Through development of an application and the provided dataset, the cost of gasoline came from traveling certain distances driving one of 32 vehicles reported in 1974. We can use the national average gasoline price of $2.523/gal in our calculations (as of 25th of February, 2018). In these slides, the variables studied at the year of 1974 are given, the output data in the format of R is displayed, and a matrix plot of variables utilized in the application is demonstrated.
+
+## Data and Variables:
+- [, 1]	mpg - 	Miles/(US) gallon.
+- [, 2]	cyl - Number of cylinders.
+- [, 3]	disp - 	Displacement (cu.in.).
+- [, 4]	hp - 	Gross horsepower.
+- [, 5]	drat - 	Rear axle ratio.
+- [, 6]	wt - 	Weight (1000 lbs)
+- [, 7]	qsec - 	quarter (1/4) mile time.
+- [, 8]	vs - 	V/S.
+- [, 9]	am - 	Transmission (0 = automatic, 1 = manual).
+- [,10]	gear - 	Number of forward gears.
+- [,11]	carb - 	Number of carburetors.
+
+## Data Output in R:
+Let's employ head(mtcars) to observe the first six lines of the data in R.
+```{r cars, echo = TRUE}
+head(mtcars)
+```
+## Plotting Data:
+A matrix is provided in the following that represent: Miles/Gallon (MPG), Number of Cylinders (CYL), Weight in 1000lbs (WT), and Type of Transmission (AM) among the 11 variables available exisitng the dataset. This matrix is constructed through this command: pairs(~mpg+cyl+wt+am, data=mtcars).
+```{r plot cars}
+pairs(~mpg+cyl+wt+am, data=mtcars, main= "Selected Data from mtcars")
+```
