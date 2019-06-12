@@ -9,9 +9,15 @@ runtime: shiny
 ---
 
 ## Overview
-In this project, the plan is developing an application for "Developing Data Products". The Motor Trend U.S. Magazine collected data from eleven variables on 32 automobiles at the year of 1974. The data for prediction was extracted from "mtcars" dataset. Through development of an application and the provided dataset, the cost of gasoline came from traveling certain distances driving one of 32 vehicles reported in 1974. We can use the national average gasoline price of $2.523/gal in our calculations (as of 25th of February, 2018). In these slides, the variables studied at the year of 1974 are given, the output data in the format of R is displayed, and a matrix plot of variables utilized in the application is demonstrated.
+* In this project, the plan is developing an application for "Developing Data Products".
+* It is the last project in the course of "Developing Data Products" that is a part of Data Science Specialization from the Johns Hopkins University. The data for prediction was extracted from "mtcars" dataset.
+* In this dataset, the Motor Trend U.S. Magazine collected data from eleven variables on 32 automobiles at the year of 1974.
+* Using this dataset and developing an application in R, we can calcualte the cost of gasoline for different distances based on the driving vehicle and national average gasoline price. In these slides, it is planned to show: (a) the dataset variables, summary and its sample output; (b) the correlation among variables; (c) data plots for analysis; (d) the links to the application, the source files, and the references.
+* Through a plot analysis, we try to understand the relationship of various factors to gas mileage (`mpg`). In this regard, the weight (`wt`) versus mileage (`mpg`) is plotted along with the X/Y axes is skethed. In this visualization of data, we have the number of cylinder (`cyl`) as color along with the amount of horsepower (`hp`) as the size of an individual point.
 
-## Data and Variables:
+## Dataset Variables
+The variables in our dataset can be seen in the following:
+
 - [, 1]	mpg - 	Miles/(US) gallon.
 - [, 2]	cyl - Number of cylinders.
 - [, 3]	disp - 	Displacement (cu.in.).
@@ -24,13 +30,48 @@ In this project, the plan is developing an application for "Developing Data Prod
 - [,10]	gear - 	Number of forward gears.
 - [,11]	carb - 	Number of carburetors.
 
-## Data Output in R:
-Let's employ head(mtcars) to observe the first six lines of the data in R.
+## Dataset Summary
+Let's take a look at the summary of the dataset used in our study:
+```{r}
+summary(mtcars)
+```
+
+## Dataset Sample Output
+Let's employ head(mtcars) to observe the first six lines of the data in R:
 ```{r cars, echo = TRUE}
 head(mtcars)
 ```
-## Plotting Data:
-A matrix is provided in the following that represent: Miles/Gallon (MPG), Number of Cylinders (CYL), Weight in 1000lbs (WT), and Type of Transmission (AM) among the 11 variables available exisitng the dataset. This matrix is constructed through this command: pairs(~mpg+cyl+wt+am, data=mtcars).
+
+## Variable Correlation
+We can perform a correlation analysis on the data from the "mtcars" dataset:
+```{r, echo=TRUE}
+library(datasets)
+data(mtcars)
+cor(mtcars)
+
+```
+
+## Plotting Data 1
+A matrix is provided in the following that represent: Miles/Gallon (MPG), Number of Cylinders (CYL), Weight in 1000lbs (WT), and Type of Transmission (AM) among the 11 variables available exisitng in the dataset. This matrix is constructed through this command: pairs(~mpg+cyl+wt+am, data=mtcars).
 ```{r plot cars}
 pairs(~mpg+cyl+wt+am, data=mtcars, main= "Selected Data from mtcars")
 ```
+
+## Plotting Data 2
+A plot for analyzing the weight versus the mileage of car data is catered in here:
+```{r, echo=FALSE, message=F, warning=F}
+suppressPackageStartupMessages(library(plotly))
+plot_ly(data = mtcars, x = ~wt, y = ~mpg, 
+        color = ~as.factor(cyl), size = ~hp,
+        text = ~paste("Weight: ", wt, '<br>MPG:', mpg),
+        type = "scatter", mode = "markers") %>%
+  layout(title = "Car Data (Weight Vs. Mileage) Analysis",
+          xaxis = list(title = 'Weight'),
+          yaxis = list(title = 'Milage'))
+```
+
+## Application, Source Files, and References
+* The developed application for the server version can be accessed at: https://shtaheri.shinyapps.io/Developing_Data_Products_Course_Project_3-master
+* The source files of the project and the supporting documents can be found at: https://github.com/shayan-taheri/Developing_Data_Products_Course_Project_3
+* Reference 01: https://shiny.rstudio.com/
+* Reference 02: http://slidify.org/publish.html

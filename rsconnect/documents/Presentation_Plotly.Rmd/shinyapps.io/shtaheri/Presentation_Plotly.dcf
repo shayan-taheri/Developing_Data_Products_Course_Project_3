@@ -1,0 +1,12 @@
+name: Presentation_Plotly
+title: Presentation_Plotly
+username:
+account: shtaheri
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 977315
+bundleId: 2147572
+url: https://shtaheri.shinyapps.io/Presentation_Plotly/
+when: 1560325055.59295
+asMultiple: FALSE
+asStatic: FALSE

@@ -6,6 +6,7 @@
 library(shiny)
 library(datasets)
 library(dplyr)
+library(knitr)
 
 # Define Server Version for Application with the Function of Drawing a Histogram:
 shinyServer(function(input, output) {
